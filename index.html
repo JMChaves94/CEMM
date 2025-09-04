@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clúster Industrial de Morón</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="icono.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+  
+  <div id="app-loader" aria-live="polite" aria-label="Cargando sitio">
+  
+    <!-- Video de fondo -->
+    <video autoplay muted loop playsinline class="loader-video">
+      <source src="fondo.mp4" type="video/mp4">
+      <!-- Agregá otros formatos si tenés (webm, ogv) -->
+    </video>
+    <div class="loader-overlay"></div>
+  
+    <!-- Contenido encima -->
+    <div class="loader-box">
+      <span class="loader-logo">CLÚSTER DE MORÓN</span>
+  
+      <div class="loader-dots" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+  
+      <div class="loader-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="loader-progress__bar"></div>
+      </div>
+  
+      <p class="loader-text"><span id="loader-perc">0</span>% • Cargando…</p>
+    </div>
+  </div>
+  
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#presentacion">
+        <img src="Logonuevo.png" alt="Clúster Industrial de Morón" class="brand-mark" />
+      </a>
+
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+
+      <nav id="main-nav" class="nav">
+        <a href="#presentacion" class="nav-link">Presentación</a>
+        <a href="#ofertas" class="nav-link">Ofertas</a>
+        <a href="#empresas" class="nav-link">Empresas</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+        <a href="loginNuevo.html" class="btn-cta">Vinculate</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+           <i class="fa-solid fa-sun"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- PRESENTACIÓN -->
+  <section id="presentacion" class="wrap-presentacion">
+ 
+ 
+    <!-- Video de fondo -->
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="videos/video.mp4" type="video/mp4">
+        <!-- Puedes agregar más formatos para compatibilidad -->
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+ 
+ 
+    <div class="presen-grid">
+      <header class="presen-head">
+        <h2 class="reveal" data-delay="0">CLÚSTER INDUSTRIAL DE MORÓN</h2>
+        <div class="underline reveal" data-delay="100" aria-hidden="true"></div>
+
+
+        <p class="lead reveal" data-delay="200">
+          El Clúster Industrial de Morón es una alianza entre empresas con sólida trayectoria
+          que ofrece soluciones integrales al sector energético y minero. Desde uno de los polos
+          productivos más dinámicos de la Provincia de Buenos Aires, brindamos una oferta variada
+          de bienes y servicios estratégicos que responde a los más altos estándares de calidad.
+        </p>
+
+
+        <p class="lead reveal" data-delay="300">
+          Impulsamos la vinculación entre el sector privado, organismos públicos y el sistema
+          científico-tecnológico para fortalecer capacidades productivas e impulsar la innovación.
+          La cooperación incrementa productividad, competitividad y velocidad de respuesta.
+        </p>
+
+
+        <div class="cta-row reveal" data-delay="350">
+          <a href="#empresas" class="btn-primary">Conocé a las empresas</a>
+          <a href="loginNuevo.html" class="btn-secondary">Vinculate</a>
+        </div>
+
+
+        <div class="stats reveal" data-delay="400" aria-label="Indicadores del clúster">
+          <div class="stat">
+            <span class="stat-num">+25</span>
+            <span class="stat-label">empresas</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">4</span>
+            <span class="stat-label">sectores</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">15+</span>
+            <span class="stat-label">años de experiencia</span>
+          </div>
+        </div>
+      </header>
+
+
+    </div>
+  </section>
+
+
+  <section id="quienes" class="wrap-about">
+  <div class="container">
+
+    <!-- QUIÉNES SOMOS -->
+    <div class="reveal-animation">
+      <h2 class="about-title">¿QUIÉNES SOMOS?</h2>
+      <p class="about-text">
+        El Clúster Energético y Minero de Morón es una alianza entre empresas con sólida trayectoria,
+        que ofrece soluciones integrales al sector energético y minero.  
+        Desde uno de los polos productivos más dinámicos de la Provincia de Buenos Aires,
+        brindamos una oferta variada de bienes y servicios estratégicos que cumplen con los
+        más altos estándares de calidad.  
+        Impulsamos la vinculación entre el sector privado, organismos públicos y el sistema
+        científico-tecnológico para fortalecer capacidades productivas e impulsar la innovación.
+      </p>
+    </div>
+
+    <!-- MISIÓN -->
+    <div class="reveal-animation">
+      <h2 class="about-title">MISIÓN</h2>
+      <p class="about-text">
+        Potenciar la competitividad de nuestras empresas a través de una oferta integrada,
+        innovadora y diversificada de bienes y servicios, garantizando soluciones adaptadas
+        a las necesidades de cada cliente.
+      </p>
+    </div>
+
+    <!-- VISIÓN -->
+    <div class="reveal-animation">
+      <h2 class="about-title">VISIÓN</h2>
+      <p class="about-text">
+        Consolidarnos como un polo proveedor confiable, eficiente e innovador,
+        ofreciendo soluciones industriales de alto valor agregado que contribuyan
+        a una matriz productiva más integrada y competitiva a nivel nacional e internacional.
+      </p>
+    </div>
+
+    <!-- NUESTROS VALORES COMPARTIDOS -->
+    <div class="reveal-animation">
+      <h2 class="about-title">NUESTROS VALORES COMPARTIDOS</h2>
+      <p class="about-text">
+        En el Clúster fomentamos la <strong>colaboración</strong> y la <strong>innovación</strong> 
+        como pilares principales.  
+        Apostamos a la transparencia, la confianza y el respeto mutuo, construyendo sinergias estratégicas
+        entre empresas, instituciones y centros de investigación.  
+        Nuestro compromiso es impulsar el desarrollo local sostenible, generando valor social,
+        económico y ambiental para la comunidad.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- EMPRESAS: SECTORES / GRID CON OVERLAY -->
+<section id="ofertas" class="wrap-empresas">
+  <div class="container">
+    <div class="reveal-animation">
+    <h2 class="about-title">NUESTRA OFERTA</h2>
+    <p class="about-text">
+      El Clúster Energético y Minero de Morón ofrece una plataforma integrada de bienes y servicios
+      para proveer al sector energético y minero. Nuestra oferta incluye:
+    </p>
+  
+    <!-- Lista de ofertas en columna -->
+    <div class="oferta-lista">
+      <!-- 1 -->
+      <div class="oferta-item">
+        <button class="oferta-btn">Servicios de Ingeniería y Consultoría</button>
+        <div class="oferta-contenido">
+          <p>
+            Diseño y ejecución de proyectos, reparación y manufactura especializada.
+            Acustización e ingeniería de sonido; resistencias eléctricas, caloventores
+            industriales; filtros de condensados y partículas; reductores y acoplamientos.
+          </p>
+        </div>
+      </div>
+  
+      <!-- 2 -->
+      <div class="oferta-item">
+        <button class="oferta-btn">Equipos y Componentes Industriales</button>
+        <div class="oferta-contenido">
+          <p>
+            Maquinarias, herramientas, mecanizados, motores e insumos industriales.
+            Fabricación de componentes bajo plano, tanques, tolvas, válvulas, CNC de
+            grandes dimensiones y accesorios de instrumentación.
+          </p>
+        </div>
+      </div>
+  
+      <!-- 3 -->
+      <div class="oferta-item">
+        <button class="oferta-btn">Tecnologías y Automatización</button>
+        <div class="oferta-contenido">
+          <p>
+            Servicios y proyectos en energía, control de procesos, optimización
+            y digitalización. Lubricantes, grasas, anticongelantes y fluidos
+            hidráulicos de alto rendimiento.
+          </p>
+        </div>
+      </div>
+  
+      <!-- 4 -->
+      <div class="oferta-item">
+        <button class="oferta-btn">Seguridad y Medio Ambiente</button>
+        <div class="oferta-contenido">
+          <p>
+            Elementos de protección personal, ropa ignífuga y térmica, calzado de seguridad,
+            plantas de tratamiento de agua y efluentes, soluciones modulares
+            y cumplimiento normativo.
+          </p>
+        </div>
+      </div>
+  
+      <!-- 5 -->
+      <div class="oferta-item">
+        <button class="oferta-btn">Logística y Servicios de Apoyo</button>
+        <div class="oferta-contenido">
+          <p>
+            Transporte, construcción, montaje y soporte en terreno.
+            Vehículos eléctricos de carga y especiales para logística.
+            Iluminación industrial, transformadores, balizas y señalización.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+</section>
+
+
+<!-- NUESTRAS EMPRESAS FILTRO BUSCADOR-->
+<section id="empresas" class="wrap-empresas">
+  <div class="container">
+    <header class="emp-head">
+      <h2 class="about-title">NUESTRAS EMPRESAS</h2>
+      <p class="about-text">Conocé a las empresas que forman parte del Clúster Industrial de Morón.</p>
+    </header>
+
+<!-- Filtros -->
+<div class="emp-controls">
+  <div class="search-wrap">
+    <input id="empSearch" type="search" placeholder="Buscar empresa o producto…">
+  </div>
+
+  <div class="controls-right">
+    <button class="clear-filters" id="clearFilters" aria-label="Limpiar búsqueda y filtros">×</button>
+  </div>
+</div>
+
+<!-- Chips de sectores -->
+<div class="chips">
+  <button class="filter-chip" data-sector="ingenieria">Servicios de Ingeniería</button>
+  <button class="filter-chip" data-sector="equipos">Equipos Industriales</button>
+  <button class="filter-chip" data-sector="tecnologia">Tecnología y Automatización</button>
+  <button class="filter-chip" data-sector="seguridad">Seguridad y Medio Ambiente</button>
+  <button class="filter-chip" data-sector="logistica">Logística y Servicios</button>
+</div>
+
+<section class="seccion-empresas">
+  <div class="container">
+    <div id="empGrid" class="empresas-grid empresas-grid--logos"></div>
+  </div>
+</section>
+
+
+</section>
+<section class="apoyo">
+  <div class="container">
+    <h2 class="about-title">APOYO INSTITUCIONAL</h2>
+
+    <ul class="apoyo-logos">
+      <li class="apoyo-card">
+        <img class="buenos-aires" src="Logomoronactual.png" alt="">
+      </li>
+      <li class="apoyo-card">
+         <img class="buenos-aires" src="beunos aires.jpg" alt="">
+      </li>
+      <li class="apoyo-card">
+        <img class="buenos-aires" src="logoChacabuco.png" alt="">
+     </li>
+      <!-- Si tenés más logos, copiá y pegá otra tarjeta aquí -->
+    </ul>
+  </div>
+</section>
+<section id="contacto-media" class="wrap-empresas">
+  <div class="container contacto-flex">
+    
+    <!-- Columna izquierda: Formulario -->
+    <div class="formulario-contacto">
+      <header class="emp-head">
+        <h2 class="about-title">CONTACTO</h2>
+        <p>Contactate con nosotros, resolvemos cualquiera de tus dudas</p>
+      </header>
+      
+      <form>
+        <div class="form-group">
+          <label for="empresa">Empresa / Institución</label>
+          <input type="text" id="empresa" name="empresa" required>
+        </div>
+
+        <div class="form-group">
+          <label for="nombre">Nombre y Apellido</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required inputmode="tel" autocomplete="tel">
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-enviar">Enviar</button>
+      </form>
+    </div>
+
+    <!-- Columna de contacto (debajo del formulario) -->
+    <section id="contacto">
+      <div class="contact-card">
+        <img src="contacto.jpg" alt="Contacto" class="contact-image">
+      </div>
+    </section>
+    
+
+
+
+
+</section>
+
+
+<section id="contacto-info" class="info-contacto">
+  <div class="container"> 
+    
+  </div>
+
+</section>
+
+  
+<footer class="site-footer" style="background:#d70000; color:white; padding:60px 40px; text-align:center; font-family:sans-serif;">
+  <div class="container" style="max-width:1300px; margin:auto;">
+    
+    <!-- Línea principal imponente -->
+    <p style="
+      font-size:40px; 
+      font-weight:900; 
+      margin:0 0 30px 0; 
+      letter-spacing:1.2px; 
+      line-height:1.3;
+      text-transform:uppercase;
+    ">
+      © 2025 Desarrollado por estudiantes de la <br>
+      Escuela Secundaria Técnica Nº6 "Chacabuco"
+    </p>
+    
+    <hr style="border:0; height:3px; background:white; width:80px; margin:35px auto;">
+    
+    <!-- Créditos en grilla de 10 bloques -->
+    <div style="
+      display:grid; 
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      gap:30px; 
+      justify-items:center; /* centra cada columna como caja */
+      font-size:13px; 
+      line-height:1.6;
+    ">
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Equipo de Desarrollo</strong><br>
+        Thomas Barcelo (7°)<br>
+        Valentín Blacutt (6°)<br>
+        Lucía Bogado (6°)<br>
+        Tiago Navarro (6°)<br>
+        Iván Bistrich (6°)<br>
+        Galo Alvarez (6°)
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Producción Audiovisual</strong><br>
+        Agustín Legunda
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Gestión Institucional</strong><br>
+        Germán González<br>
+        Jefe de área
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Supervisión Académica</strong><br>
+        Prof. Juan Marcelo Chaves<br>
+        Jefe de Depto.<br>
+        Informática y Programación
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Colaboración Profesional</strong><br>
+        Daniela Vecino<br>
+        Frontend – UNAHUR
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Acompañamiento Docente</strong><br>
+        Área Informática<br>
+        Área Programación
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Institución</strong><br>
+        EEST N°6 "Chacabuco"<br>
+        Morón – Buenos Aires
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Apoyo Institucional</strong><br>
+        Dirección de la Escuela<br>
+        Equipo de Conducción
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Innovación y Tecnología</strong><br>
+        Desarrollo Web<br>
+        Transformación Digital
+      </div>
+      
+      <div style="max-width:220px; text-align:left;">
+        <strong>Valores Compartidos</strong><br>
+        Compromiso<br>
+        Trabajo en equipo<br>
+        Innovación
+      </div>
+      
+    </div>
+    
+  </div>
+</footer>
+
+
+<script src="Empresas.js"></script>
+<script src="script.js"></script>
+
+
+<script>
+(function () {
+  // 1) Desactivar que el navegador recuerde la posición del scroll
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  function goTop() {
+    // 2) Si vino con #hash, lo saco para que no salte al ancla
+    if (location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    // 3) Forzar arriba (varias pasadas por si hay loader/reflows)
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+    setTimeout(() => window.scrollTo(0, 0), 50);
+  }
+
+  // Al cargar
+  window.addEventListener('load', goTop, { once: true });
+  // Al volver desde el back/forward cache (Safari/Firefox/Chrome)
+  window.addEventListener('pageshow', (e) => { if (e.persisted) goTop(); });
+  // Al recargar/cerrar
+  window.addEventListener('beforeunload', () => { window.scrollTo(0, 0); });
+})();
+</script>
+
+<script>
+(function () {
+  const grid = document.getElementById('empGrid');
+  const section = document.getElementById('empresas'); // sección "Empresas"
+  if (!grid || !section) return;
+
+  grid.addEventListener('click', function (e) {
+    const card = e.target.closest('.empresa-card');
+    if (!card) return;
+    e.preventDefault();
+
+    const openPanel   = card.querySelector('.open-card');
+    const closedPanel = card.querySelector('.closed-card');
+    const isOpen = card.classList.contains('is-open');
+
+    if (isOpen) {
+      // --- CERRAR ---
+      card.classList.remove('is-open');
+      // restauro tamaño
+      card.style.width = '';
+      card.style.height = '';
+      // muestro card cerrada
+      openPanel && (openPanel.style.display = 'none');
+      closedPanel && (closedPanel.style.display = 'block');
+      // vuelvo a habilitar hermanos
+      [...grid.children].forEach(el => {
+        el.style.opacity = '';
+        el.style.pointerEvents = '';
+        el.style.filter = '';
+      });
+    } else {
+      // --- ABRIR ---
+      card.classList.add('is-open');
+      // apago hermanos pero SIN sacarlos del flujo (no colapsa el grid)
+      [...grid.children].forEach(el => {
+        if (el !== card) {
+          el.style.transition = 'opacity .2s ease';
+          el.style.opacity = '0.05';
+          el.style.pointerEvents = 'none';
+          el.style.filter = 'grayscale(1)';
+        }
+      });
+      // muestro panel abierto y oculto el cerrado
+      openPanel && (openPanel.style.display = 'block');
+      closedPanel && (closedPanel.style.display = 'none');
+
+      // expando esta card (mismo estilo que usabas)
+      card.style.transition = 'width 1s ease, height 1s ease';
+      card.style.width = '70vw';
+      card.style.height = '70vh';
+
+      // cuando termine el reflow, SCROLL a la parte superior de la sección
+      requestAnimationFrame(() => {
+        const headerOffset = 84; // altura de tu header sticky
+        const top = section.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const btn  = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  function setTheme(mode){
+    body.classList.toggle('dark-mode', mode === 'dark');
+    btn.innerHTML = body.classList.contains('dark-mode')
+      ? '<i class="fa-solid fa-moon"></i>'   // estás en oscuro, mostrás luna
+      : '<i class="fa-solid fa-sun"></i>';   // estás en claro, mostrás sol
+    // localStorage.setItem('theme', mode);  // <- QUITALO si querés que siempre inicie claro
+  }
+
+  // Al cargar: SIEMPRE modo claro
+  setTheme('light');
+
+  // Toggle
+  btn.addEventListener('click', ()=>{
+    const next = body.classList.contains('dark-mode') ? 'light' : 'dark';
+    setTheme(next);
+  });
+})();
+</script>
+
+
+</body>
+
+
+<script>
+  if (!('open' in document.createElement('details'))) {
+    document.write('<script src="https://cdn.jsdelivr.net/npm/details-polyfill@1.2.4/dist/details-polyfill.min.js"><\/script>');
+  }
+</script>
+
+</html>

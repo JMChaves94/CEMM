@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar sesión • CIM</title>
+  <link rel="icon" href="icono.jpg" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" /> <!-- tu CSS global -->
+  <link rel="stylesheet" href="login.css" />  <!-- CSS de login -->
+</head>
+<body class="login-body">
+
+<!-- LOADER -->
+<div id="app-loader" aria-live="polite" aria-label="Cargando sitio">
+  <div class="loader-box">
+    <span class="loader-logo">CLÚSTER DE MORÓN</span>
+    <div class="loader-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="loader-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="loader-progress__bar"></div>
+    </div>
+    <p class="loader-text"><span id="loader-perc">0</span>% • Cargando…</p>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html#presentacion">
+      <img src="Logonuevo.png" alt="Clúster Industrial de Morón" class="brand-mark" />
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+
+    <nav id="main-nav" class="nav">
+      <a href="index.html#presentacion" class="nav-link">Presentación</a>
+      <a href="LoginNuevo.html" class="btn-cta">Vinculate</a>
+    </nav>
+  </div>
+</header>
+
+<!-- VIDEO DE FONDO -->
+<div class="video-background" aria-hidden="true">
+  <video autoplay muted loop playsinline poster="poster.jpg">
+    <source src="video-de-prueba.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+</div>
+
+<!-- CONTENIDO -->
+<main class="auth-wrapper" role="main">
+  <section class="auth-card" aria-labelledby="login-title">
+    <div class="auth-head">
+      <img src="logoNuevoFondo.jpg" alt="" class="auth-logo">
+      <h1 id="login-title">Próximamente se implementará un CRM</h1>
+      <p class="auth-subtitle">Gracias por su paciencia</p>
+    </div>
+
+  </section>
+</main>
+
+<!-- Scripts -->
+<script>
+/* Loader seguro */
+(function(){
+  const loader = document.getElementById('app-loader');
+  const bar = document.querySelector('.loader-progress__bar');
+  const percLabel = document.getElementById('loader-perc');
+  if(!loader) return;
+
+  let target = 0, shown = 0;
+  const estTimer = setInterval(() => { target = Math.min(95, target + 5); }, 90);
+  window.addEventListener('load', () => { target = 100; });
+
+  (function tick(){
+    shown += (target - shown) * 0.14;
+    const pct = Math.round(shown);
+    if(bar) bar.style.width = pct + '%';
+    if(percLabel) percLabel.textContent = pct;
+    requestAnimationFrame(tick);
+  })();
+
+  setTimeout(() => {
+    clearInterval(estTimer);
+    target = 100;
+    loader.classList.add('hidden');
+    document.body.classList.add('is-ready');
+    setTimeout(() => loader.remove?.(), 550);
+  }, 1000);
+})();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('main-nav');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = ''; // no bloqueamos scroll
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
+
+
+
+</body>
+</html>

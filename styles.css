@@ -1,0 +1,2356 @@
+/* ===== Tokens ===== */
+
+:root{
+	--red:#F01C24;
+	--ink:#f5f2f2;
+	--muted:#6B7280;
+	--bg:#ffffff;
+	--section-bg:#F9FAFB;
+	--card-bg:#F7F7F9;
+	--radius:16px;
+	--shadow:0 10px 30px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html,body{
+	margin:0; 
+	padding:0; 
+	background: #f5f6f8; /* mismo gris unificado */
+	color: black;
+	font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;
+	font-size:16.5px; 
+	line-height:1.6;
+}
+html{ scroll-behavior:smooth; }
+section{ scroll-margin-top: 84px; }
+.container{max-width:1270px;margin:0 auto;padding:0 20px}
+
+/* ===== Header ===== */
+.site-header{
+	position:sticky;
+	top:0;
+	z-index:50;
+	background:var(--red);
+	color:#fff;
+	box-shadow:var(--shadow);
+}
+.site-header .container{ height:91px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand{display:flex; align-items:center; gap:10px; color:#ffffff; text-decoration:none; font-weight:800; letter-spacing:.5px}
+.brand-mark{width:80px; height:80px; object-fit:contain; border-radius:6px}
+.brand-text{font-size:18px}
+.nav{display:flex; align-items:center; gap:20px}
+
+/* ===== Modificado: subrayado animado ===== */
+.site-header .nav .nav-link,
+.site-header .nav .nav-link:link,
+.site-header .nav .nav-link:visited{
+	color:#fff;
+	text-decoration:none !important;   /* fuerza SIN subrayado por defecto */
+	font-weight:600;
+	font-size:18.5px;
+	opacity:.95;
+	position:relative;
+	background-image: linear-gradient(currentColor, currentColor); /* "línea" */
+	background-position: 0 100%;   /* pegada abajo */
+	background-repeat: no-repeat;
+	background-size: 0% 2px;       /* oculta de inicio */
+	transition: background-size .25s ease, opacity .2s ease;
+}
+.site-header .nav .nav-link:hover{
+	opacity:1;
+	background-size: 100% 2px;     /* aparece de a poco en hover */
+}
+.site-header .nav .nav-link.active,
+.site-header .nav .nav-link[aria-current="page"]{
+	background-size: 100% 2px;     /* visible en el activo */
+}
+/* ===== Fin mod ===== */
+
+.btn-cta{ background:#fff; color:var(--red); font-weight:800; padding:10px 14px; border-radius:999px; text-decoration:none; border:2px solid #fff; transition:.1s }
+.btn-cta:hover{transform:translateY(-1px); background:transparent; color:#fff}
+
+a:focus-visible, button:focus-visible{ outline:3px solid #fff; outline-offset:2px; border-radius:8px }
+.nav-toggle{ display:none; border:0; background:transparent; cursor:pointer; width:40px; height:40px; padding:8px; border-radius:8px;}
+.nav-toggle .bar{display:block; width:100%; height:2px; background:#fff; margin:5px 0}
+
+@media (max-width: 880px){
+	.nav-toggle{display:block}
+	.nav{
+		position:fixed;
+		inset:64px 0 auto 0;
+		background:var(--red);
+		display:flex;
+		flex-direction:column;
+		gap:14px;
+		padding:16px 20px 24px;
+		transform:translateY(-12px);
+		opacity:0;
+		pointer-events:none;
+		transition:.2s
+	}
+	.nav.open{transform:translateY(0); opacity:1; pointer-events:auto}
+	.btn-cta{align-self:flex-start}
+}
+
+/* ===== Presentación ===== */
+.wrap-presentacion{background-image: url("fondo\ cluster.png");}
+.presen-grid{ max-width:1120px; margin:72px auto; padding:24px 20px 48px; display:grid; gap:48px; grid-template-columns: 1.2fr 1fr; }
+@media (max-width: 960px){ .presen-grid{grid-template-columns: 1fr; gap:28px} }
+.presen-head h2{ margin:0 0 10px; font-weight:900; letter-spacing:.4px; font-size:clamp(28px,3.6vw,44px); color:var(--ink); }
+.underline{ width:140px; height:4px; background:var(--red); border-radius:999px; margin:10px 0 20px; transform-origin:left center; transform:scaleX(0); }
+.lead{color:#acb3c3; font-size:17px; line-height:1.7; margin:0 0 14px}
+.cta-row{display:flex; gap:12px; margin:14px 0 8px}
+.btn-primary,.btn-secondary{ display:inline-flex; align-items:center; justify-content:center; height:44px; padding:0 18px; border-radius:999px; font-weight:800; text-decoration:none; border:2px solid var(--red); transition:.12s }
+.btn-primary{ background:var(--red); color:#fff } .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 8px 16px rgba(240,28,36,.18) }
+.btn-secondary{ background:#fff; color:var(--red) } .btn-secondary:hover{ background:color-mix(in srgb, var(--red) 7%, #fff) }
+@media (max-width:560px){ .cta-row{flex-direction:column} }
+.stats{ display:flex; gap:18px; align-items:center; flex-wrap:wrap;  border:1px solid #ECECF1; border-radius:14px; padding:10px 12px; margin-top:12px; box-shadow:0 1px 0 rgba(0,0,0,.04); }
+.stat{ display:flex; align-items:baseline; gap:8px; padding:6px 10px; background:rgba(207, 196, 196, 0.189); border-radius:12px; transition:.15s }
+.stat{ display:flex; align-items:baseline; gap:8px; padding:6px 10px; border-radius:12px; transition:.15s }
+.stat-num{font-weight:900; color:var(--red); font-size:18px} .stat-label{color:#f1eaeb; font-size:14px}
+.stat:hover{ background:color-mix(in srgb, var(--red) 6%, var(--card-bg)); transform:translateY(-1px) }
+.presen-cards{ display:grid; gap:16px; grid-template-columns: 1fr 1fr; border-left:1px solid #ECECF1; padding-left:28px; }
+@media (max-width: 960px){ .presen-cards{border-left:0; padding-left:0} }
+@media (max-width: 720px){ .presen-cards{grid-template-columns: 1fr} }
+.card{ background:linear-gradient(180deg,#fff, var(--card-bg)); border:1px solid #ECECF1; border-radius:20px; padding:18px 18px 16px; box-shadow:0 1px 0 rgba(0,0,0,.04); transition:.2s; min-height:140px; display:flex; flex-direction:column; gap:10px; }
+.card:hover{ transform:translateY(-3px); box-shadow:var(--shadow); border-color:#E6E6EA; background:#fff }
+.card p{margin:0; color:#3B3B45}
+.chip{ align-self:flex-start; font-size:12px; font-weight:800; letter-spacing:.3px; color:var(--red); border:1px solid color-mix(in srgb, var(--red) 30%, transparent); background:#ffffff; padding:6px 10px; border-radius:999px; transition:.15s }
+.chip:hover{ background:color-mix(in srgb, var(--red) 8%, #fff); border-color:color-mix(in srgb, var(--red) 50%, transparent) }
+.reveal{ opacity:0; transform:translateY(14px); } .reveal.in{ opacity:1; transform:none; transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1); } .reveal.in.underline{ transform:scaleX(1) }
+@media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none} .reveal.in{transition:none} }
+.placeholder{min-height:60vh; display:grid; place-items:center; color:#999}
+.placeholder h3{margin:0; font-weight:800; letter-spacing:.4px}
+
+
+
+/* ===== Empresas / Hubs ===== */
+.wrap-empresas{ background:#ffffff; padding:56px 0 }
+.emp-head h2{ margin:0 0 8px; font-weight:900; font-size:clamp(24px,3.2vw,36px) }
+.emp-lead{ color:#4b5563; margin:0 0 14px }
+.emp-controls{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:18px }
+.search input{ height:44px; min-width:260px; padding:0 14px; border-radius:12px; border:1px solid #e5e7eb; background:#fff; outline:0; font-size:15px; box-shadow:0 1px 0 rgba(0,0,0,.04); }
+.search input:focus{ border-color: color-mix(in srgb, var(--red) 40%, #e5e7eb); box-shadow:0 0 0 3px color-mix(in srgb, var(--red) 20%, transparent) }
+.filter-chip{ border:1px solid color-mix(in srgb, var(--red) 30%, #e5e7eb); background:#fff; color:var(--red); border-radius:999px; height:36px; padding:0 12px; display:inline-flex; align-items:center; font-weight:700; cursor:pointer; transition:.12s }
+.filter-chip:hover{ background:color-mix(in srgb, var(--red) 6%, #fff); transform:translateY(-1px) }
+
+/* Hubs */
+.hubs-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+@media (max-width:980px){ .hubs-grid{ grid-template-columns:1fr } }
+.hub-card{ background:linear-gradient(180deg,#fff,var(--card-bg)); border:1px solid #ECECF1; border-radius:18px; box-shadow:0 1px 0 rgba(0,0,0,.04); overflow:hidden; }
+.hub-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 16px; }
+.hub-title{ margin:0; font-weight:900; font-size:18px; line-height:1.2 }
+.hub-count{ font-weight:800; color:var(--red); background:#fff; border:1px solid color-mix(in srgb, var(--red) 35%, transparent); border-radius:999px; padding:6px 10px; }
+.hub-toggle{ border:1px solid #e5e7eb; background:#fff; height:36px; padding:0 12px; border-radius:10px; font-weight:800; cursor:pointer }
+.hub-panel{ border-top:1px solid #ECECF1; background:#fff; max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.hub-card.is-open .hub-panel{ max-height:2000px; } /* suficiente para contenido medio */
+.hub-card.is-open{ box-shadow:var(--shadow); border-color:#E6E6EA; }
+
+/* Grilla de empresas dentro del hub */
+.emp-grid{ display:flex; flex-wrap:wrap; gap:22px; justify-content:center; padding:16px; }
+.emp-card{
+	flex:1 1 320px; max-width:360px; display:flex; flex-direction:column;
+	background:linear-gradient(180deg,#fff,var(--card-bg));
+	border:1px solid #ECECF1; border-radius:16px; padding:16px;
+	transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+	opacity:0; transform:translateY(10px); animation:empFade .45s ease forwards;
+}
+.emp-card:hover{ transform:translateY(-3px) scale(1.02); box-shadow:var(--shadow); border-color:#E6E6EA; background:#fff; }
+@keyframes empFade{ to{ opacity:1; transform:none; } }
+.emp-top{ display:flex; align-items:center; gap:10px }
+.emp-logo{ width:48px; height:48px; border-radius:12px; background:#fff; border:1px solid #e5e7eb; display:grid; place-items:center; font-weight:900; color:var(--red) }
+.emp-name{ font-weight:800; line-height:1.2 }
+.emp-sector{ font-size:12px; color:var(--red); font-weight:700; border:1px solid color-mix(in srgb, var(--red) 35%, transparent); border-radius:999px; padding:4px 8px; align-self:flex-start; white-space:normal; line-height:1.2; }
+.emp-desc{ color:#4b5563; font-size:14px; line-height:1.45; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+.emp-actions{ margin-top:auto }
+.emp-btn{ display:inline-flex; align-items:center; justify-content:center; width:100%; height:40px; border-radius:12px; border:1.5px solid var(--red); color:var(--red); background:#fff; font-weight:800; text-decoration:none; }
+.emp-btn:hover{ background:var(--red); color:#fff }
+.emp-empty{ text-align:center; color:#6b7280; margin-top:14px }
+
+/* Drawer detalle */
+.emp-drawer-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.32); opacity:0; pointer-events:none; transition:.2s ease; }
+.emp-drawer{ position:fixed; top:0; right:0; height:100dvh; width:min(540px, 92vw); background:#fff; box-shadow:-20px 0 40px rgba(0,0,0,.18); transform:translateX(100%); transition:transform .28s ease; z-index:60; display:flex; flex-direction:column; }
+.emp-drawer.open{ transform:none } .emp-drawer.open + .emp-drawer-backdrop{ opacity:1; pointer-events:auto }
+.drawer-close{ position:absolute; top:10px; right:12px; width:38px; height:38px; border-radius:10px; border:1px solid #e5e7eb; background:#fff; font-size:18px; cursor:pointer; }
+.drawer-content{ padding:20px 18px 24px; overflow:auto }
+.drawer-head{ display:flex; align-items:center; gap:10px; margin-bottom:10px }
+.drawer-logo{ width:56px; height:56px; border-radius:14px; border:1px solid #e5e7eb; display:grid; place-items:center; font-weight:900; color:var(--red) }
+.drawer-name{ font-weight:900; font-size:20px; margin:0 }
+.drawer-sector{ font-size:12px; color:var(--red); font-weight:800; border:1px solid color-mix(in srgb, var(--red) 35%, transparent); border-radius:999px; padding:4px 8px }
+.drawer-block{ background:var(--card-bg); border:1px solid #ECECF1; border-radius:14px; padding:12px 12px; margin:10px 0 }
+.drawer-block h4{ margin:0 0 6px; font-size:14px }
+.drawer-list{ margin:0; padding:0 0 0 16px }
+.drawer-contact a{ color:var(--red); text-decoration:none }
+
+
+/*  video heade */
+.wrap-presentacion {
+	position: relative;
+	overflow: hidden;
+	background: none; /* Elimina la imagen de fondo si la tienes */
+}
+
+.video-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.video-background video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.video-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.4); /* Ajusta la opacidad según necesites */
+	z-index: 1;
+}
+
+.presen-grid {
+	position: relative;
+	z-index: 2; /* Asegura que el contenido esté sobre el video */
+}
+
+/*  ----------------  tajetas ------------------------- */
+.empresa-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.empresa-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+}
+
+
+.empresa-card {
+	width: calc(33.333% - 20px); /* 3 columnas */
+	min-width: 280px;
+	height: 300px;
+}
+
+/* En la última fila centramos las tarjetas sobrantes */
+.empresas-grid::after {
+	content: '';
+	flex: auto;
+}
+
+.empresa-card:hover {
+	transform: scale(1.03); /* Efecto de zoom al pasar el mouse */
+}
+
+.empresa-image {
+    max-width: 150px;       /* Controla el tamaño máximo */
+    max-height: 150px;      /* Mantiene proporción */
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;         /* Centrado horizontal */
+    object-fit: contain;    /* Evita que se corten */
+}
+
+
+.empresa-card:hover .empresa-image {
+	transform: scale(1.1); /* Zoom en la imagen al pasar el mouse */
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 140, 186, 0.8); 
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	padding: 20px;
+	text-align: center;
+}
+
+.empresa-card:hover .overlay {
+	opacity: 1;
+}
+
+.overlay-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.overlay-description {
+	font-size: 16px;
+}
+
+/* Animación base */
+.empresa-card {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: 
+		opacity 0.6s ease-out,
+		transform 0.6s ease-out;
+	transition-delay: calc(var(--order) * 0.1s); /* Efecto cascada */
+}
+
+.empresa-card.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* === Centrar los logos de NUESTRAS EMPRESAS === */
+.empresa-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;     
+    align-items: center;         
+    height: 220px;               
+    padding: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Contenedor exclusivo para los logos */
+.empresa-card #closed-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* Ajustamos el tamaño de los logos */
+.empresa-image {
+    max-width: 140px;          
+    max-height: 120px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;        
+}
+
+	/* ===== QUIENES ===== */
+.wrap-about {
+	background: var(--section-bg);
+	padding: 56px 0;
+}
+
+.about-title,
+.about-subtitle {
+	font-size: clamp(26px, 4vw, 36px);
+	font-weight: 900;
+	margin-bottom: 12px;
+	position: relative;
+	display: inline-block;
+	
+}
+
+.about-title::after,
+.about-subtitle::after {
+	content: "";
+	display: block;
+	width: 140px;
+	height: 4px;
+	background: var(--red);
+	border-radius: 999px;
+	margin-top: 6px;
+}
+
+.about-text {
+	font-size: 16.5px;
+	line-height: 1.65;
+	color: #4b5563;
+	margin: 0 0 20px;
+}
+
+
+.reveal-animation {
+	overflow: hidden;
+	position: relative;
+}
+
+
+/* Animaciones de revelado */
+.reveal-animation {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: all 0.80s ease-out;
+	margin-bottom: 40px;
+}
+
+.reveal-animation.animated {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Efecto de aparición por palabras (opcional) */
+.about-text {
+	overflow: hidden;
+}
+
+.about-text span {
+	opacity: 0;
+	transition: opacity 0.3s ease-out;
+}
+
+.about-text.animated span {
+	opacity: 1;
+}
+
+/* ===== Stats (chips bajo CTA) — glass / premium ===== */
+.stats{
+	display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+	padding:10px 12px;
+	border-radius:16px;
+	background: rgba(255,255,255,0.12);            /* vidrio translúcido */
+	backdrop-filter: blur(10px);                    /* desenfoque del fondo */
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255,255,255,0.28);       /* borde suave */
+	box-shadow: 0 10px 30px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.24);
+}
+
+.stat{
+	display:flex; align-items:baseline; gap:8px;
+	padding:8px 12px;
+	border-radius:12px;
+	background: rgba(255,255,255,0.10);
+	border: 1px solid rgba(255,255,255,0.20);
+	transition: transform .15s ease, background .15s ease, border-color .15s ease;
+	color:#fff;                                     /* en el hero se ve sobre oscuro */
+}
+
+.stat:hover{
+	transform: translateY(-2px);
+	background: rgba(255,255,255,0.16);
+	border-color: rgba(255,255,255,0.32);
+}
+
+.stat-num{
+	font-weight:900;
+	font-size:18px;
+	line-height:1;
+	color:#fff;                                     /* número bien marcado */
+}
+
+.stat-label{
+	font-size:13px;
+	line-height:1.1;
+	color:#f5f5f5;
+	opacity:.95;
+}
+
+/* Responsive: que no ocupen todo el ancho en móviles */
+@media (max-width:560px){
+	.stats{ padding:8px 10px; gap:8px; }
+	.stat{ padding:7px 10px; }
+	.stat-num{ font-size:17px; }
+	.stat-label{ font-size:12.5px; }
+}
+
+/* Centrar el bloque de estadísticas bajo el CTA */
+.stats {
+	justify-content: center; /* centra horizontalmente el contenido */
+	margin: 0 auto;          /* asegura que el contenedor esté centrado */
+	max-width: fit-content;  /* hace que se ajuste al contenido */
+}
+
+
+/* Rectángulo ancho como el texto */
+.stats {
+	max-width: 720px;        /* ajustá este valor al ancho del párrafo */
+	margin: 0;               /* alineación igual que el texto */
+	justify-content: center; /* centramos los .stat adentro */
+}
+
+/* Asegura que el texto y stats se alineen */
+.presen-head {
+	max-width: 720px;        /* mismo ancho que .stats */
+}
+
+/* 1) Legibilidad sobre video: overlay con degradé más fuerte */
+.video-overlay{
+	background:
+		linear-gradient(180deg, rgba(0,0,0,.50) 0%, rgba(0,0,0,.35) 40%, rgba(0,0,0,.25) 100%);
+}
+
+/* 2) Ancho y tipografía del bloque de encabezado */
+.presen-head{
+	max-width: 720px;        /* mismo ancho que acordaste para texto y stats */
+}
+.presen-head h2{
+	letter-spacing:.2px;
+	line-height:1.15;        /* más compacto, más “título” */
+	text-shadow: 0 2px 10px rgba(0,0,0,.35); /* refuerza contraste */
+}
+
+/* 3) Botones: más “clickables” y consistentes con glass */
+.btn-primary,.btn-secondary{
+	height: 46px;
+	padding: 0 20px;
+	border-width: 2px;
+}
+.btn-secondary{ border-color:#fff } /* mejora legibilidad sobre video */
+.cta-row{ gap:14px; margin:18px 0 12px } /* un poco más de aire */
+
+/* 4) Stats: separación vertical y centrado ya usados + mismo ancho */
+.stats{
+	margin-top: 12px;
+	max-width: 720px;    /* igual que .presen-head */
+	justify-content: center;
+}
+
+/* 5) Micro-animación sutil (respeta reduce motion) */
+@media (prefers-reduced-motion: no-preference){
+	.btn-primary,.btn-secondary,.stat{
+		transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+	}
+	.btn-primary:hover,.btn-secondary:hover{ transform: translateY(-2px) }
+}
+
+/* 6) Mobile: que todo respire y no se corte */
+@media (max-width: 560px){
+	.presen-grid{ padding: 18px 16px 36px }
+	.presen-head{ max-width: 100% }
+	.btn-primary,.btn-secondary{ width: 100% }   /* CTA en columna ya lo tenés; refuerzo */
+	.stats{ max-width: 100%; padding: 8px 10px }
+}
+
+/* Mejora de legibilidad en el hero (overlay + texto) */
+.video-overlay{
+	background:
+		linear-gradient(180deg,
+			rgba(0,0,0,.65) 0%,
+			rgba(0,0,0,.50) 40%,
+			rgba(0,0,0,.35) 100%);
+}
+
+/* Párrafos del bloque de presentación: color y sombra */
+#presentacion .presen-head p{
+	color:#fff;
+	text-shadow: 0 2px 6px rgba(0,0,0,.55);
+}
+
+
+/* ===== Sectores (grilla con overlay y botón al hover) ===== */
+.sectors-grid{
+	display:grid;
+	grid-template-columns: repeat(3, minmax(0,1fr));
+	gap:22px;
+}
+@media (max-width: 980px){ .sectors-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 640px){ .sectors-grid{ grid-template-columns: 1fr; } }
+
+.sector-card{
+	position:relative; display:block; border-radius:18px; overflow:hidden;
+	box-shadow:0 1px 0 rgba(0,0,0,.05); border:1px solid #ECECF1;
+	isolation:isolate; outline:0;
+}
+.sector-card:focus-visible{ box-shadow:0 0 0 3px color-mix(in srgb, var(--red) 35%, #fff); }
+
+.sector-img{
+	width:100%; height:260px; object-fit:cover; display:block;
+	transition: transform .5s ease;
+}
+
+/* Overlay + animación */
+.sector-overlay{
+	position:absolute; inset:0; display:flex; flex-direction:column;
+	justify-content:center; align-items:center; text-align:center; padding:18px; color:#fff;
+	background:
+		linear-gradient(180deg, rgba(0,0,0,.50) 0%, rgba(0,0,0,.45) 40%, rgba(0,0,0,.40) 100%);
+	opacity:0; transition: opacity .3s ease;
+}
+.sector-title{
+	font-size:clamp(18px, 2.4vw, 22px); font-weight:900; margin:0 0 10px;
+}
+.sector-btn{
+	display:inline-flex; align-items:center; justify-content:center; height:40px; padding:0 16px;
+	border-radius:999px; font-weight:800; border:2px solid #fff; background:#fff; color:var(--red);
+	box-shadow:0 6px 18px rgba(0,0,0,.18); transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+.sector-btn:hover{ transform:translateY(-2px); }
+.sector-card:hover .sector-img, .sector-card:focus-visible .sector-img{ transform:scale(1.06); }
+.sector-card:hover .sector-overlay, .sector-card:focus-visible .sector-overlay{ opacity:1; }
+
+/* Ajuste visual en dark-on-light */
+.wrap-empresas{ padding:56px 0; }
+.emp-head h2{ margin:0 0 8px; font-weight:900; font-size:clamp(24px,3.2vw,36px) }
+.emp-head p{ color:#4b5563; margin:0 0 16px }
+
+
+
+/* animacion de card*/
+
+
+/* Animaciones para las cards de sectores */
+.sectors-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 25px;
+	margin-top: 40px;
+}
+
+.sector-card {
+	position: relative;
+	overflow: hidden;
+	border-radius: 8px;
+	height: 250px;
+	opacity: 0;
+	transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* Direcciones de animación alternadas */
+.sector-card:nth-child(4n+1) {
+	transform: translateX(-50px);
+}
+.sector-card:nth-child(4n+2) {
+	transform: translateY(50px);
+}
+.sector-card:nth-child(4n+3) {
+	transform: translateX(50px);
+}
+.sector-card:nth-child(4n+4) {
+	transform: translateY(-50px);
+}
+
+/* Estado animado */
+.sector-card.animated {
+	opacity: 1;
+	transform: translate(0, 0) !important;
+}
+
+/* Estilos existentes del card (conserva estos) */
+.sector-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s ease;
+}
+
+.sector-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.sector-card:hover .sector-overlay {
+	opacity: 1;
+}
+
+.sector-card:hover .sector-img {
+	transform: scale(1.05);
+}
+
+.sector-title {
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+	text-align: center;
+	padding: 0 15px;
+}
+
+.sector-btn {
+	padding: 8px 20px;
+	background: var(--red);
+	border-radius: 20px;
+	font-weight: bold;
+}
+
+/*fin de animacion de card */
+
+
+.empresas-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+}
+
+.empresa-card {
+	position: relative;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.empresa-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform .4s ease;
+}
+
+.empresa-image-small {
+	width: 40%;
+	height: 40%;
+	object-fit: cover;
+	transition: transform .4s ease;
+	border-radius: 12px;
+}
+
+.overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0,0,0,0.55);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transition: opacity .4s ease;
+	padding: 20px;
+	text-align: center;
+}
+
+.overlay-title {
+	font-size: 1.1rem;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 8px;
+}
+
+.overlay-description {
+	color: #ddd;
+	font-size: 0.9rem;
+}
+
+.empresa-card:hover .empresa-image {
+	transform: scale(1.05);
+}
+
+.empresa-card:hover .overlay {
+	opacity: 1;
+}
+
+
+/* Layout de controles */
+.emp-controls{
+	display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+	margin-bottom:10px;
+}
+.search-wrap{ flex:1 1 360px; }
+.search-wrap input{
+	width:100%; height:44px; padding:0 14px; border-radius:12px; border:1px solid #e5e7eb; outline:0;
+}
+.controls-right{ display:flex; gap:8px; align-items:center; }
+
+/* Chips */
+.chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+.filter-chip{
+	border:1px solid color-mix(in srgb, var(--red) 30%, #e5e7eb);
+	background:#fff; color:var(--red); border-radius:999px; height:36px; padding:0 12px;
+	font-weight:700; cursor:pointer; transition:.12s ease;
+}
+.filter-chip:hover{ background:color-mix(in srgb, var(--red) 6%, #fff); }
+.filter-chip.is-active{ background:var(--red); color:#fff; border-color:var(--red); }
+
+/* Botón limpiar (X) */
+.clear-filters{
+	width:36px; height:36px; border-radius:999px;
+	border:1px solid #ccc;
+	background:#f9f9f9;
+	color:#555;
+	font-size:18px; font-weight:bold;
+	line-height:1;
+	cursor:pointer;
+	transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.clear-filters:hover{
+	background:#eee;
+	color:#222;
+	border-color:#999;
+}
+
+
+/* Responsive */
+@media (max-width:640px){
+	.controls-right{ margin-left:auto; }
+}
+
+/* Chips en una sola línea con scroll horizontal si no entra */
+.chips{
+	display:flex;
+	gap:8px;
+	align-items:center;
+	white-space:nowrap;      /* no permite salto de línea */
+	overflow-x:auto;         /* scrollea si no entra */
+	padding-bottom:4px;      /* espacio para no cortar el sombreado */
+	scrollbar-width: thin;   /* Firefox */
+}
+.chips::-webkit-scrollbar{ height:6px; }
+.chips::-webkit-scrollbar-thumb{ background:#e5e7eb; border-radius:999px; }
+
+/* Los chips no se estiran ni se rompen */
+
+.filter-chip{
+	flex:0 0 auto;
+	height:34px;
+	padding:0 10px;
+	font-size:13px;
+}
+
+
+
+/* Animación de flotación continua */
+@keyframes superSlowFloat {
+	0%, 100% {
+		transform: translateY(0) translateX(0);
+	}
+	50% {
+		transform: translateY(-20px) translateX(5px);
+	}
+}
+
+/* Aplicar a todo el contenedor principal */
+.wrap-empresas {
+	animation: superSlowFloat 12s ease-in-out infinite;
+	opacity: 1;
+	transition: opacity 4s ease-out;
+}
+
+/* Aparecer al hacer scroll */
+.wrap-empresas.visible {
+	opacity: 1;
+}
+
+/* Animación para elementos internos con delays */
+.about-title {
+	animation: superSlowFloat 10s ease-in-out infinite 0.5s;
+}
+
+.emp-head img:first-child {
+	animation: superSlowFloat 11s ease-in-out infinite 1s;
+}
+
+.emp-head .buenos-aires {
+	animation: superSlowFloat 9s ease-in-out infinite 1.5s;
+}
+/* ----------------logotipos empresas y logotipos apoyo ------------ */
+
+.apoyo__title {
+	position: relative;
+	display: inline-block; /* subrayado solo bajo el texto */
+	margin-bottom: 20px;    /* espacio debajo */
+}
+
+.apoyo__title::after {
+	content: "";
+	position: absolute;
+	bottom: -5px;  /* distancia del subrayado al texto */
+	left: 0;
+	width: 200px;   /* largo del subrayado */
+	height: 3px;   /* grosor */
+	background-color: #e30613; /* rojo institucional */
+}
+.seccion-empresas {
+	background-color: #f0f0f0;
+	padding: 20px 0;
+	width: 100%;
+	text-align: center; /* centra el contenido */
+}
+
+.logotipo {
+	margin: 0; 
+	display: inline-block; 
+}
+
+.apoyo{
+	background:#f7f7f7;
+	padding:48px 0;
+	width:100%;
+}
+.apoyo .wrap{
+	max-width:1200px;
+	margin:auto;
+	padding:0 16px;
+}
+
+/* Título (usa tu tipografía actual) */
+.apoyo__title{
+	margin: 0px;
+	font-size: clamp(1.6rem, 1.2rem + 1vw, 2.2rem);
+}
+
+/* Grid responsive de tarjetas */
+.apoyo-logos{
+	list-style:none;
+	margin:0; padding:0;
+	display:grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap:20px;
+	align-items:stretch;
+}
+
+
+/* Tarjeta simple y elegante */
+.apoyo-card{
+	background:#fff;
+	border:1px solid #e8e8e8;
+	border-radius:16px;
+	box-shadow: 0 6px 18px rgba(0,0,0,.06);
+	padding:24px;
+	min-height:140px;
+
+	display:flex;
+	align-items:center;
+	justify-content:center;
+
+	transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.apoyo-card:hover{
+	transform: translateY(-3px);
+	box-shadow: 0 14px 28px rgba(0,0,0,.12);
+	border-color:#ddd;
+}
+
+/* Los logos se ven nítidos y centrados */
+.apoyo-card img{
+	max-width:100%;
+	max-height:80px;   /* ajustá según necesites */
+	object-fit:contain;
+	display:block;
+}
+
+
+/*------------------------formulario------------------*/
+
+
+/* ====== Tokens / variables del sitio ====== */
+:root{
+	--red: #F01C24;
+	--red-600: #e73e0f;
+	--text: #1b1b1b;
+	--muted: #6b7280;
+	--border: #d1d5db;
+	--radius: 10px;
+	--shadow: 0 8px 30px rgba(0,0,0,.08);
+	--shadow-focus: 0 0 0 4px rgba(240,28,36,.16);
+}
+
+/* ====== Sección contacto ====== */
+#contacto{
+	padding-block: clamp(24px, 5vw, 56px);
+}
+
+#contacto .container{
+	max-width: 1100px;
+	margin-inline: auto;
+}
+
+/* Layout: formulario + mapa */
+.contacto-flex{
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(20px, 4vw, 36px);
+	align-items: start;
+}
+
+@media (max-width: 900px){
+	.contacto-flex{
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ====== Encabezado del formulario ====== */
+.formulario-contacto .emp-head{
+	margin-bottom: 18px;
+}
+
+.formulario-contacto .about-title{
+	margin: 0 0 6px;
+	font-size: clamp(22px, 3.6vw, 32px);
+	letter-spacing: .2px;
+	color: var(--text);
+}
+
+.formulario-contacto .emp-head p{
+	margin: 0 0 16px;
+	color: var(--muted);
+	font-size: 15px;
+}
+
+
+
+#contacto{
+	padding-block: clamp(24px, 5vw, 56px);
+}
+
+#contacto .container{
+	max-width: 1100px;
+	margin-inline: auto;
+}
+
+.contacto-flex{
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(20px, 4vw, 36px);
+	align-items: start;
+}
+
+@media (max-width: 900px){
+	.contacto-flex{ grid-template-columns: 1fr; }
+}
+
+/* Encabezado */
+.formulario-contacto .emp-head{ margin-bottom: 18px; }
+.formulario-contacto .about-title{
+	margin: 0 0 6px;
+	font-size: clamp(22px, 3.6vw, 32px);
+	color: var(--text);
+}
+.formulario-contacto .emp-head p{
+	margin: 0 0 16px;
+	color: var(--muted);
+	font-size: 15px;
+}
+
+/* Formulario */
+.formulario-contacto form{
+	background: #fff;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: clamp(16px, 3.5vw, 22px);
+	box-shadow: var(--shadow);
+}
+
+.form-group{ margin-bottom: 16px; }
+
+.form-group label{
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: #212121;
+	font-size: 14px;
+}
+
+
+/* Inputs */
+.form-group input,
+.form-group textarea{
+	width: 100%;
+	padding: 12px 14px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	font-size: 16px;
+	background: #fff;
+	transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-group textarea{ min-height: 120px; resize: vertical; }
+.form-group ::placeholder{ color:#9aa1ab; }
+
+.form-group input:focus-visible,
+.form-group textarea:focus-visible{
+	outline: none;
+	border-color: var(--red);
+	box-shadow: var(--shadow-focus);
+}
+.form-group:focus-within label{ color: var(--red); }
+
+/* Estados inválidos */
+.form-group input:required:invalid:not(:placeholder-shown),
+.form-group textarea:required:invalid:not(:placeholder-shown){
+	border-color: #ef4444;
+}
+
+/* Botón */
+.btn-enviar{
+	display: inline-flex;
+	justify-content: center;
+	width: 100%;
+	background-color: var(--red-600);
+	color: #fff;
+	border: none;
+	padding: 12px 18px;
+	font-size: 16px;
+	font-weight: 700;
+	border-radius: 999px;
+	cursor: pointer;
+	transition: transform .06s ease, box-shadow .2s ease, background-color .2s ease;
+	box-shadow: var(--shadow);
+}
+.btn-enviar:hover{ background-color: var(--red); transform: translateY(-1px); }
+.btn-enviar:focus-visible{ outline: none; box-shadow: var(--shadow-focus); }
+.btn-enviar:active{ transform: translateY(0); }
+
+.contact-card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 40px;
+	background: #fff; /* o #f7f7f7 si querés gris */
+	border-radius: 16px;
+	box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+  
+  .contact-card img.contact-image {
+	max-width: 100%;
+	height: auto;
+	border-radius: 12px;
+  }
+  
+/* ==== LOADER ==== */
+:root{
+	--brand-red:#e50914;   /* ajustá al rojo de tu header */
+	--loader-fg:#ffffff;
+	--loader-bg:#0b0b0b;   /* se usa para el blur de fondo detrás */
+}
+
+#app-loader{
+	position: fixed;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	background: var(--brand-red);
+	z-index: 9999;
+	transition: opacity .45s ease, visibility .45s ease;
+}
+
+#app-loader.hidden{
+	opacity: 0;
+	visibility: hidden;
+}
+
+/* Caja central */
+#app-loader .loader-box{
+	display: grid;
+	gap: .75rem;
+	place-items: center;
+	padding: 2.25rem 2.5rem;
+	border-radius: 18px;
+	color: var(--loader-fg);
+	backdrop-filter: blur(6px) saturate(1.2);
+	background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.08));
+	animation: pop-in .5s cubic-bezier(.2,.7,.2,1) both;
+}
+
+.loader-logo{
+	font: 800 1.25rem/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+	letter-spacing:.18em;
+	text-transform: uppercase;
+}
+
+/* Puntitos */
+.loader-dots{
+	display:flex; gap:.45rem; margin-top:.15rem;
+}
+.loader-dots span{
+	width:.55rem; height:.55rem; border-radius:50%;
+	background: var(--loader-fg);
+	opacity:.35;
+	animation: dot 1.2s infinite ease-in-out;
+}
+.loader-dots span:nth-child(2){ animation-delay:.15s }
+.loader-dots span:nth-child(3){ animation-delay:.30s }
+
+.loader-text{
+	margin:0; font: 500 .9rem/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+	opacity:.85;
+}
+
+/* Animaciones */
+@keyframes dot{
+	0%, 80%, 100%{ transform: translateY(0); opacity:.35 }
+	40%{ transform: translateY(-6px); opacity:1 }
+}
+@keyframes pop-in{
+	0%{ transform: translateY(10px) scale(.98); opacity:0 }
+	100%{ transform: translateY(0) scale(1); opacity:1 }
+}
+
+/* Tip: si querés que el contenido aparezca suave al liberar el loader */
+body:not(.is-ready) main, body:not(.is-ready) header, body:not(.is-ready) footer{
+	opacity:0; transform: translateY(6px);
+	transition: opacity .35s ease .15s, transform .35s ease .15s;
+}
+body.is-ready main, body.is-ready header, body.is-ready footer{
+	opacity:1; transform:none;
+}
+
+/* FONDO con degradé + viñeta */
+/* Fondo con degradé + viñeta */
+#app-loader{
+	position: fixed; inset: 0; display: grid; place-items: center;
+	background:
+		radial-gradient(1400px 700px at 50% 40%, rgba(0,0,0,.28), transparent 60%),
+		linear-gradient(115deg, #e50914, #b50f15 70%);
+	z-index: 9999; transition: opacity .45s ease, visibility .45s ease;
+}
+#app-loader.hidden{ opacity:0; visibility:hidden }
+
+/* Caja GRANDE y llamativa */
+#app-loader .loader-box{
+	position: relative; display:grid; gap:1rem; place-items:center;
+	padding: 3.2rem 3.6rem;              /* más grande */
+	border-radius: 24px;
+	color:#fff;
+	backdrop-filter: blur(10px) saturate(1.25);
+	background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.12));
+	box-shadow:
+		0 35px 80px rgba(0,0,0,.35),
+		0 0 0 1px rgba(255,255,255,.06) inset,
+		0 0 30px rgba(255,255,255,.10) inset;  /* glow interior */
+	overflow: hidden;
+	animation: pop-overshoot .6s cubic-bezier(.2,.9,.2,1.2) both;
+}
+#app-loader .loader-box::after{           /* Shine barrido */
+	content:""; position:absolute; inset:-40% -120% -40% -120%;
+	background: linear-gradient(75deg, transparent 45%, rgba(255,255,255,.45) 50%, transparent 55%);
+	transform: translateX(-45%);
+	animation: shine 2.2s linear infinite;
+	pointer-events:none;
+}
+
+.loader-logo{
+	font: 800 clamp(1.1rem, 1.8vw + .6rem, 1.8rem)/1.05 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+	letter-spacing:.22em; text-transform:uppercase;
+}
+
+/* Puntitos */
+.loader-dots{ display:flex; gap:.55rem; margin-top:.15rem }
+.loader-dots span{
+	width:.7rem; height:.7rem; border-radius:50%;
+	background:#fff; opacity:.35; animation: dot 1.2s infinite ease-in-out
+}
+.loader-dots span:nth-child(2){ animation-delay:.15s }
+.loader-dots span:nth-child(3){ animation-delay:.30s }
+
+/* Barra de progreso más gruesa */
+.loader-progress{
+	width: 320px; height: 10px; border-radius: 999px; overflow: hidden;
+	background: rgba(255,255,255,.25);
+	box-shadow: 0 2px 10px rgba(0,0,0,.25) inset;
+}
+.loader-progress__bar{
+	width: 0%; height: 100%; background: #fff; border-radius: inherit;
+	transform-origin: left center; transition: width .22s ease;
+}
+
+.loader-text{ margin:0; font: 600 1rem/1.15 system-ui, -apple-system, Segoe UI, Roboto, Arial; opacity:.92 }
+
+/* Fade-in del sitio */
+body:not(.is-ready) main, body:not(.is-ready) header, body:not(.is-ready) footer{
+	opacity:0; transform: translateY(8px);
+	transition: opacity .35s ease .10s, transform .35s ease .10s;
+}
+body.is-ready main, body.is-ready header, body.is-ready footer{ opacity:1; transform:none }
+
+/* Animaciones */
+@keyframes dot{ 0%,80%,100%{ transform:translateY(0); opacity:.35 } 40%{ transform:translateY(-7px); opacity:1 } }
+@keyframes shine{ from{ transform: translateX(-50%) } to{ transform: translateX(50%) } }
+@keyframes pop-overshoot{
+	0%{ transform: translateY(12px) scale(.94); opacity:0 }
+	60%{ transform: translateY(0) scale(1.02); opacity:1 }
+	100%{ transform: translateY(0) scale(1) }
+}
+
+/* ====== GRID DE LOGOS – LLENA EL BLOQUE GRIS ====== */
+.seccion-empresas { padding: 0; }
+
+/* hace que el grid ocupe 100% del ancho disponible en ese bloque */
+#empGrid.empresas-grid{
+	width: 100%;
+	margin: 0;                 /* sin márgenes raros */
+	padding: 12px 0 20px;      /* un toque de aire arriba/abajo */
+	display: grid;
+	grid-template-columns: repeat(4, 0fr);  /* 6 columnas fijas (llena de lado a lado) */
+	grid-auto-rows: 165px;                  /* alto de cada fila (ajustalo si querés) */
+	gap: 16px;                               /* separación pareja entre cards */
+	justify-items: stretch;                  /* las cards se estiran a su columna */
+	align-items: stretch;                    /* las cards llenan la fila */
+}
+
+/* la card ocupa toda su celda del grid */
+.empresa-card--logo{
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+	background: #fff;
+	box-shadow: 0 2px 8px rgba(0,0,0,.06);
+	/* display: flex; */
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	transition: transform .2s ease, box-shadow .2s ease;
+}
+.empresa-card--logo:hover{
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(0,0,0,.1);
+}
+
+/* el logo NO define el tamaño, se adapta a la card */
+.empresa-image--logo{
+	max-width: 85%;
+	max-height: 70%;
+	object-fit: contain;
+}
+
+/* overlay sigue funcionando si lo dejás */
+.empresa-card--logo .overlay{
+	position: absolute; inset: 0;
+	background: rgba(240,28,36,.88);
+	color: #fff; display:flex; flex-direction:column;
+	align-items:center; justify-content:center;
+	opacity: 0; transition: opacity .25s ease;
+	text-align:center; padding: 10px;
+}
+.empresa-card--logo:hover .overlay{ opacity: 1; }
+
+/* Responsive suaves (si achican ventana) */
+@media (max-width: 1200px){
+	#empGrid.empresas-grid{ grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 992px){
+	#empGrid.empresas-grid{ grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 768px){
+	#empGrid.empresas-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px){
+	#empGrid.empresas-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* === GRID DE LOGOS ALINEADO AL ANCHO DE .container === */
+.seccion-empresas{
+	background: transparent;          /* sacamos la franja gris a lo ancho */
+	padding: 10px 0 24px;
+}
+
+/* El grid de logos usa su PROPIA clase para no romper otros */
+.empresas-grid--logos{
+	margin: 0;                       
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));  /* 6 columnas exactas */
+	grid-auto-rows: 120px;           /* alto fijo por fila (ajustá si querés) */
+	gap: 16px;                       /* separación pareja */
+}
+
+/* Las cards llenan su celda, prolijas */
+.empresas-grid--logos .empresa-card{
+	border-radius: 12px;
+	background:#fff;
+	box-shadow: 0 1px 6px rgba(0,0,0,.06);
+	display:flex; align-items:center; justify-content:center; 
+	overflow:hidden;
+}
+
+/* El logo se contiene (no estira la card) */
+.empresas-grid--logos .empresa-image{
+	max-width: 80%;
+	max-height: 70%;
+	object-fit: contain;
+}
+
+/* Overlay opcional (si ya lo tenías) */
+.empresas-grid--logos .overlay{
+	position:absolute; inset:0;
+	background: rgba(240,28,36,.88);
+	color:#fff; display:flex; align-items:center; justify-content:center; flex-direction:column;
+	opacity:0; transition:opacity .2s ease;
+	text-align:center; padding:10px;
+}
+.empresas-grid--logos .empresa-card:hover .overlay{ opacity:1 }
+
+/* Responsivo: mantiene el mismo “look” en cada breakpoint */
+@media (max-width: 1200px){
+	.empresas-grid--logos{ grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 992px){
+	.empresas-grid--logos{ grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 768px){
+	.empresas-grid--logos{ grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px){
+	.empresas-grid--logos{ grid-template-columns: repeat(2, 1fr); }
+}
+
+
+
+.site-footer {
+    background: var(--red); 
+    color: #fff; 
+    padding: 20px 0; 
+    text-align: center; 
+}
+
+.site-footer .copyright {
+    font-weight: bold; 
+    font-size: 1.1em; 
+}
+/* ===== NUESTRA OFERTA – BOTONES EN COLUMNA ===== */
+.oferta-lista {
+	max-width: 720px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.oferta-btn {
+	width: 100%;
+	text-align: left;
+	background: var(--red);
+	color: #fff;
+	font-weight: 700;
+	padding: 20px 24px;   /* más alto y ancho */
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	font-size: 1.2rem;   /* texto más grande */
+	min-height: 70px;    /* asegura que tengan buena altura */
+	transition: background .2s ease, transform .1s ease;
+}
+
+
+.oferta-btn:hover {
+	background: #c3121a;
+	transform: translateY(-2px);
+}
+
+.oferta-contenido {
+	max-height: 0;
+	overflow: hidden;
+	background: #e2e2e2;
+ 
+	border-radius: 10px;
+	padding: 0 16px;
+	transition: max-height .3s ease, padding .3s ease;
+}
+
+.oferta-contenido p {
+	margin: 12px 0;
+	font-size: 0.95rem;
+	color: #444;
+	line-height: 1.5;
+}
+
+.oferta-item.active .oferta-contenido {
+	max-height: 400px; /* suficiente para el texto */
+	padding: 12px 16px;
+}
+/* ===== Estilo para card expandida ===== */
+#open-card {
+	display: none;
+	padding: 24px;
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+	overflow-y: auto;
+	height: 100%;
+	color: #333;
+  }
+  
+  #open-card .header-card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 16px;
+  }
+  
+  #open-card .empresa-image-small {
+	width: 64px;
+	height: 64px;
+	object-fit: contain;
+	border-radius: 12px;
+	border: 1px solid #eee;
+	background: #fff;
+  }
+  
+  #open-card .header-card a {
+	font-size: 14px;
+	color: var(--red);
+	font-weight: 700;
+	border: 1px solid var(--red);
+	padding: 6px 12px;
+	border-radius: 8px;
+	text-decoration: none;
+	transition: all .2s ease;
+  }
+  #open-card .header-card a:hover {
+	background: var(--red);
+	color: #fff;
+  }
+  
+  #open-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	font-weight: 900;
+	color: #222;
+  }
+  
+  #open-card p.overlay-description {
+	color: #555;
+	font-size: 0.95rem;
+	margin-bottom: 16px;
+	line-height: 1.5;
+  }
+  
+  #open-card .empresa-detalle {
+	background: var(--card-bg);
+	border: 1px solid #e5e7eb;
+	border-radius: 12px;
+	padding: 16px;
+	margin-bottom: 16px;
+  }
+  
+  #open-card .empresa-detalle p {
+	margin: 6px 0;
+	font-size: 0.9rem;
+	color: #444;
+  }
+  
+  #open-card .empresa-detalle strong {
+	color: var(--red);
+	font-weight: 700;
+  }
+  
+  #open-card .card-link {
+	display: inline-block;
+	margin-top: 12px;
+	padding: 10px 16px;
+	border-radius: 999px;
+	background: var(--red);
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+	transition: all .2s ease;
+  }
+  #open-card .card-link:hover {
+	background: #d4121a;
+	transform: translateY(-2px);
+  }
+/* ===== Loader con video ===== */
+#app-loader {
+	position: fixed;
+	inset: 0;
+	background: #000; /* fallback */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+	overflow: hidden;
+  }
+  
+  .loader-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 0;
+  }
+  
+  .loader-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0,0,0,0.5); 
+	z-index: 1;
+  }
+  
+  .loader-box {
+	position: relative;
+	z-index: 2; 
+	color: #fff;
+	text-align: center;
+  }
+
+.wrap-empresas {
+	background: #f5f5f5; 
+	padding: 60px 20px;  
+  }
+  
+  .empresas-grid {
+	gap: 24px;           
+  }
+
+.wrap-empresas {
+	padding-bottom: 40px;
+  }
+  
+  #contacto {
+	padding-top: 40px; 
+  }
+  
+/* ==== Estilo moderno para la sección QUIÉNES SOMOS ==== */
+#quienes {
+    padding: 60px 20px;
+    background: #fff; /* Fondo limpio */
+}
+
+/* Títulos */
+#quienes .about-title {
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 900;
+    color: #222;
+    margin-bottom: 14px;
+    position: relative;
+    display: inline-block;
+}
+
+#quienes .about-title::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 3px;
+    background-color: var(--red);
+    border-radius: 999px;
+    margin-top: 6px;
+}
+
+/* Párrafos */
+#quienes .about-text {
+    color: #4b5563;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    text-align: justify;
+}
+
+/* Palabras clave: más sutil */
+#quienes .about-text strong {
+    color: #d63c3c;
+    font-weight: 700;
+}
+
+/* Animación suave */
+#quienes .reveal-animation {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#quienes .reveal-animation.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+/* === (1) CARDS EN UNA SOLA COLUMNA EN MOBILE === */
+@media (max-width: 560px){
+  /* fuerza 1 columna sin importar reglas anteriores */
+  #empGrid.empresas-grid,
+  .empresas-grid--logos,
+  #empGrid.empresas-grid.empresas-grid--logos{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    grid-auto-rows: auto !important;
+  }
+
+  /* que cada card ocupe todo el ancho de su fila */
+  #empGrid .empresa-card{
+    width: 100% !important;
+    min-height: 120px !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  #empGrid .empresa-image{
+    max-width: 80% !important;
+    max-height: 70% !important;
+    object-fit: contain !important;
+    margin: 0 auto;
+  }
+}
+
+/* === (2) INICIO/LOADER CENTRADO (nada de “de costado”) === */
+html, body{ width:100%; overflow-x: hidden; }  /* por si algo empuja el layout */
+
+#app-loader{
+  position: fixed !important;
+  inset: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+  min-height: 100dvh !important;
+  padding: max(env(safe-area-inset-top), 10px) 10px max(env(safe-area-inset-bottom), 10px) !important;
+  z-index: 9999 !important;
+}
+
+#app-loader .loader-video{
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transform: none !important;
+}
+
+#app-loader .loader-overlay{
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0,0,0,.45) !important;
+}
+
+#app-loader .loader-box{
+  position: relative !important;
+  margin: 0 auto !important;
+  width: min(92vw, 520px) !important;
+  padding: clamp(18px, 5vw, 32px) clamp(18px, 6vw, 34px) !important;
+  border-radius: clamp(14px, 3vw, 24px) !important;
+  text-align: center !important;
+  transform: none !important;         /* evita que quede “cruzado” */
+}
+
+#app-loader .loader-progress{
+  width: clamp(220px, 60vw, 320px) !important;
+  height: clamp(8px, 1.8vw, 10px) !important;
+}
+#app-loader .loader-dots span{
+  width: clamp(7px, 1.8vw, 10px) !important;
+  height: clamp(7px, 1.8vw, 10px) !important;
+}
+
+
+/* CENTRAR el botón Vinculate en el menú móvil */
+@media (max-width: 880px){
+  #main-nav .btn-cta{
+    align-self: center !important;   /* vence el align-self:flex-start */
+    margin: 8px auto 0 !important;   /* lo coloca en el centro de la columna */
+    display: inline-flex !important;
+    justify-content: center;
+    text-align: center;
+
+    /* mantener estilo del botón */
+    background: #fff !important;
+    border-color: #fff !important;
+    color: var(--red) !important;
+  }
+}
+
+
+/* ===== Dropdown que EMPUJA el contenido (mobile) ===== */
+@media (max-width: 880px){
+  /* el header deja de tener altura fija y se deja expandir */
+  .site-header .container{
+    display: grid;
+    grid-template-columns: 1fr auto;          /* brand | toggle */
+    grid-template-rows: var(--header-h) auto; /* barra arriba + nav debajo */
+    align-items: center;
+    height: auto;               /* <- clave */
+    min-height: var(--header-h);
+  }
+  .brand{ grid-row:1; grid-column:1; }
+  .nav-toggle{ grid-row:1; grid-column:2; justify-self:end; }
+
+  /* nav en flujo normal (no fixed), colapsable */
+  .nav{
+    position: static !important;
+    inset: auto !important;
+    transform: none !important; /* mata transfs viejas */
+    opacity: 1 !important;      /* visible, pero colapsado */
+    pointer-events: auto !important;
+
+    width: 100%;
+    background: var(--red);
+    display: flex; flex-direction: column; gap: 6px;
+    border-radius: 0 0 16px 16px;
+
+    max-height: 0;              /* colapsado */
+    overflow: hidden;
+    padding: 0 var(--container-x);
+    transition: max-height .28s ease, padding .2s ease;
+    z-index: 1;                 /* suficiente, ya empuja */
+  }
+  .nav.open{
+    max-height: 420px;          /* grande de sobra para los links */
+    padding: 8px var(--container-x) 14px;
+  }
+
+  /* links y CTA */
+  .nav a{ display:block; text-align:center; color:#fff; }
+  .nav a + a{ border-top: 1px solid rgba(255,255,255,.14); }
+  #main-nav .btn-cta{
+    align-self:center; margin-top:8px;
+    background:#fff; border-color:#fff; color:var(--red);
+  }
+
+  /* si antes tenías un overlay en body al abrir, lo anulamos */
+  body.menu-open::before{ display:none !important; }
+}
+
+
+/* ===== Centrar el contenido del dropdown (mobile) ===== */
+@media (max-width: 880px){
+  /* el contenedor del menú: sin padding lateral y centrado */
+  .nav{
+    padding: 0 !important;           /* quita sangría lateral */
+    align-items: center !important;   /* centra los hijos */
+    text-align: center;
+  }
+  .nav.open{
+    padding: 10px 0 14px !important;  /* solo padding vertical al abrir */
+  }
+
+  /* cada link ocupa el mismo ancho centrado */
+  .nav a{
+    display: block;
+    width: 100%;
+    max-width: 340px;                 /* ajustá si querés más/menos ancho */
+    margin: 0 auto;
+  }
+
+  /* separador sutil entre items (opcional) */
+  .nav a + a{
+    border-top: 1px solid rgba(255,255,255,.14);
+  }
+
+  /* CTA centrado y con estilo correcto */
+  #main-nav .btn-cta{
+    align-self: center !important;
+    background: #fff !important;
+    border-color: #fff !important;
+    color: var(--red) !important;
+    margin-top: 8px;
+  }
+}
+
+
+/* Ajuste fino: columna del menú móvil perfectamente centrada */
+@media (max-width: 880px){
+  .nav{
+    --menu-w: 320px;                 /* probá 300–360 si querés */
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  .nav a,
+  #main-nav .btn-cta{
+    width: 100%;
+    max-width: var(--menu-w);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  /* separadores quedarán centrados porque siguen el ancho del link */
+  .nav a + a{
+    border-top: 1px solid rgba(255,255,255,.14);
+  }
+}
+
+
+/* Usa el mismo gris en ambas secciones */
+:root { --section-bg: #f5f6f8; } /* el gris que ya venís usando */
+
+.wrap-empresas,
+.apoyo{
+  background: var(--section-bg);
+}
+
+/* Evita la "línea blanca" (colapso de márgenes) */
+.apoyo{
+  margin-top: 0;        /* quita margen que se colapsa */
+  padding-top: 32px;    /* deja la separación pero sin corte */
+}
+
+/* Da un respiro abajo de Empresas para que no se peguen */
+.wrap-empresas{
+  padding-bottom: 32px;
+}
+
+/* Si alguna sombra de las cards pinta una línea, recorta */
+.wrap-empresas,
+.apoyo{
+  overflow: hidden;
+}
+
+
+
+
+/* —— Colores (claro) —— */
+:root{
+  --bg:#ffffff;
+  --text:#111111;
+  --header:#d70000;   /* rojo institucional */
+  --footer:#d70000;
+  --card:#ffffff;     /* cards de logos SIEMPRE blancas */
+}
+
+/* —— Colores (oscuro) —— */
+body.dark-mode{
+  --bg:#000000;
+  --text:#f2f2f2;
+  --header:#d70000;   /* mantenemos marca */
+  --footer:#d70000;
+  --card:#ffffff;     /* logos sobre blanco */
+}
+
+/* —— Aplicación —— */
+html,body{margin:0}
+body{background:var(--bg); color:var(--text);}
+
+.site-header,.site-footer{background:var(--header); color:#fff;}
+
+a{color:inherit}
+
+/* Cards: agregá acá la clase que use tu grilla de logos si es otra */
+.card, .empresa-card, .logo-card, [data-card="logo"]{
+  background:var(--card);
+  border-radius:12px;
+}
+
+/* Botón de la luna */
+.theme-toggle{
+  background:transparent; border:none; color:inherit;
+  font-size:1rem; cursor:pointer; padding:6px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.theme-toggle:focus,.theme-toggle:active{outline:none; box-shadow:none;}
+
+
+/* ===== MODO OSCURO (rápido y efectivo) ===== */
+body.dark-mode {
+  /* invierte toda la página */
+  filter: invert(1) hue-rotate(180deg);
+  background: #000000; /* por si algún fondo tapa el body */
+}
+
+/* Volver a la normalidad los medios (si no, quedan raros) */
+body.dark-mode img,
+body.dark-mode video,
+body.dark-mode picture,
+body.dark-mode iframe {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Mantener colores de marca en header y footer */
+body.dark-mode .site-header,
+body.dark-mode .site-footer {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Las cards de logos: interior blanco y logo normal */
+body.dark-mode .card,
+body.dark-mode .empresa-card,
+body.dark-mode .logo-card,
+body.dark-mode [data-card="logo"] {
+  background: #ffffff !important;
+  filter: invert(1) hue-rotate(180deg); /* anula la inversión global en la card */
+  box-shadow: 0 0 0 1px rgba(0,0,0,.25) inset;
+  border-radius: inherit;
+}
+body.dark-mode .card img,
+body.dark-mode .empresa-card img,
+body.dark-mode .logo-card img,
+body.dark-mode [data-card="logo"] img {
+  filter: none !important; /* el logo no se vuelve a invertir */
+}
+
+/* Botón de la luna limpio (sin cuadrado blanco) */
+.theme-toggle{
+  background: transparent; border: none; color: inherit;
+  font-size: 1rem; cursor: pointer; padding: 6px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.theme-toggle:focus,.theme-toggle:active{ outline: none; box-shadow: none; }
+
+
+/* Forzar color correcto en títulos */
+h1, h2, h3, h4, h5, h6 {
+  color: var(white) !important;
+}
+
+/* Corrige los títulos grandes que se ven mal en modo oscuro */
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4 {
+  filter: invert(1) hue-rotate(180deg); /* devuelve el color original */
+  color: #ffffff !important;            /* los forzamos a blanco en oscuro */
+}
+
+
+/* === FIX INSTANTÁNEO: sin invert, negro puro y sin líneas === */
+
+/* 1) Apagar TODO el invert que rompe colores (sin tocar tu JS) */
+body.dark-mode{ filter:none !important; }
+body.dark-mode img,
+body.dark-mode video,
+body.dark-mode picture,
+body.dark-mode iframe,
+body.dark-mode .site-header,
+body.dark-mode .site-footer,
+body.dark-mode .card,
+body.dark-mode .empresa-card,
+body.dark-mode .logo-card,
+body.dark-mode [data-card="logo"]{ filter:none !important; }
+
+/* 2) Variables efectivas en oscuro (NEGRO real) */
+body.dark-mode{
+  --bg:#000000;
+  --text:#f2f2f2;
+}
+
+/* 3) Fondo y texto desde variables */
+html,body{ background:var(--bg) !important; }
+body{ color:var(--text) !important; }
+
+/* 4) Títulos blancos en oscuro (y corrige var(white) roto) */
+h1,h2,h3,h4,h5,h6{ color:inherit; }
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6{ color:#fff !important; }
+
+/* 5) Unificar fondo negro en el contenido (sin tocar header/footer rojos) */
+body.dark-mode main,
+body.dark-mode section,
+body.dark-mode .section,
+body.dark-mode #valores,
+body.dark-mode #oferta,
+body.dark-mode #empresas,
+body.dark-mode #apoyo,
+body.dark-mode #contacto{
+  background:#000 !important;
+}
+
+/* 6) Cards SIEMPRE blancas */
+body.dark-mode .card,
+body.dark-mode .empresa-card,
+body.dark-mode .logo-card,
+body.dark-mode [data-card="logo"]{
+  background:#fff !important;
+  color:#111 !important;
+  border-radius:12px;
+}
+
+/* 7) Eliminar el “pelo” blanco entre bloques */
+img,picture,video,canvas{ display:block; }         /* sin gap baseline */
+section{ margin-block:0; }                          /* sin colapso márgenes */
+section>*:first-child{ margin-top:0; }
+section>*:last-child{  margin-bottom:0; }
+
+
+
+/* ===== Contraste en DARK: títulos blancos y texto claro ===== */
+body.dark-mode{
+  --title: #ffffff;   /* títulos */
+  --text:  #e9e9e9;   /* párrafos */
+  --muted: #bdbdbd;   /* secundarios */
+}
+
+/* Títulos bien blancos */
+body.dark-mode :is(h1,h2,h3,h4,h5,h6,
+  .about-title, .apoyo__title, .section-title, .empresas-title,
+  .emp-head h2, .titulo-seccion){
+  color: var(--title) !important;
+  text-shadow: none !important;
+}
+
+
+/* Texto general más claro y 100% de opacidad */
+body.dark-mode :is(p,li,span,small,blockquote,
+  .lead, .emp-head p, .subtitulo, .section p){
+  color: var(#111111) !important;
+  opacity: 1 !important;
+}
+
+/* Secundarios/grises */
+body.dark-mode :is(.muted,.text-muted,.note,.detalle){
+  color: var(--muted) !important;
+  opacity: 1 !important;
+}
+
+/* Por si algún contenedor baja la opacidad del bloque entero */
+body.dark-mode :is(section,.section,.content,.container){
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+
+/* ===== TITULOS VISIBLES EN DARK ===== */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode .title,
+body.dark-mode [class*="title"],
+body.dark-mode .titulo,
+body.dark-mode .titulo-seccion,
+body.dark-mode .section-title,
+body.dark-mode .about-title,
+body.dark-mode .apoyo__title,
+body.dark-mode .empresas-title,
+body.dark-mode .emp-head h2 {
+  color:#fff !important;                 /* texto blanco */
+  opacity:1 !important;                  /* por si algún contenedor baja opacidad */
+  filter:none !important;                /* evita filtros raros */
+  mix-blend-mode:normal !important;      /* nada de difference/multiply */
+  background:none !important;            /* mata gradients en texto */
+  -webkit-background-clip:border-box !important;
+  background-clip:border-box !important;
+  -webkit-text-fill-color:#fff !important; /* corrige títulos con color:transparent */
+  text-shadow:none !important;           /* evita que “desaparezcan” con sombras */
+}
+
+/* Si el título está dentro de un wrapper que baja opacidad */
+body.dark-mode :is(.emp-head,.section,.content,.container){
+  opacity:1 !important;
+  filter:none !important;
+}
+
+
+/* ===== Texto legible dentro de las CARDS (modo oscuro) ===== */
+body.dark-mode .card,
+body.dark-mode .empresa-card,
+body.dark-mode .logo-card,
+body.dark-mode [data-card="logo"]{
+  background:#fff !important;
+  color:#111 !important;              /* color base oscuro */
+}
+
+/* Texto común adentro de la card */
+body.dark-mode .card :where(p,li,span,small,dd,dt,td,th,label,
+                            .emp-desc,.emp-data,.emp-body,.texto){
+  color:#111 !important;
+  -webkit-text-fill-color:#111 !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+}
+
+/* Mantené botones/etiquetas con su color (no los apago) */
+body.dark-mode .card :where(.btn,.button,.badge,.tag,.chip,.pill,.cta){
+  color:#fff !important;
+}
+body.dark-mode .card :where(.btn,.button){ background:#d70000 !important; }
+
+/* Inputs dentro de cards (si tenés formularios) */
+body.dark-mode .card :where(input,textarea,select){
+  background:#fff !important;
+  color:#111 !important;
+  border-color:#e5e5e5 !important;
+}
+body.dark-mode .card ::placeholder{ color:#777 !important; opacity:1; }
+
+
+/* === DARK: texto de las CARDS bien oscuro y sin desvanecidos === */
+body.dark-mode .card,
+body.dark-mode .empresa-card,
+body.dark-mode .logo-card,
+body.dark-mode [data-card="logo"]{
+  background:#fff !important;
+  color:#111 !important;
+}
+
+/* paneles internos que se ven gris/traslúcidos */
+body.dark-mode .card :is(.emp-body,.emp-data,.emp-desc,.emp-info,
+                         .emp-resumen,.emp-content,.detalle,.info,
+                         [class*="emp-"], [class*="detail"], [class*="desc"], [class*="info"]){
+  background:#fff !important;
+  color:#111 !important;
+  border:1px solid #eee !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  -webkit-text-fill-color:#111 !important;
+  text-shadow:none !important;
+}
+
+/* texto común adentro (sin tocar botones) */
+body.dark-mode .card :is(p,li,span,small,em,strong,dd,dt,td,th,label,a):not(.btn):not(.button){
+  color:#111 !important;
+  opacity:1 !important;
+}
+
+/* botones y chips siguen con contraste */
+body.dark-mode .card :is(.btn,.button){ background:#d70000 !important; color:#fff !important; }
+body.dark-mode .card :is(.badge,.tag,.chip,.pill){ color:#fff !important; }
+
+/* inputs dentro de cards */
+body.dark-mode .card :is(input,textarea,select){
+  background:#fff !important; color:#111 !important; border-color:#e5e5e5 !important;
+}
+body.dark-mode .card ::placeholder{ color:#777 !important; opacity:1 !important; }
+
+
+/* === DARK: contenido de las CARDS bien legible === */
+body.dark-mode .card,
+body.dark-mode .empresa-card,
+body.dark-mode .logo-card,
+body.dark-mode [data-card="logo"]{
+  background:#fff !important;
+  color:#111 !important;
+}
+
+/* Boxes internos (el recuadro gris) */
+body.dark-mode .card .emp-body,
+body.dark-mode .card .emp-data,
+body.dark-mode .card .emp-desc,
+body.dark-mode .card .emp-info{
+  background:#fff !important;
+  border:1px solid #eee !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+}
+
+/* Texto común dentro de la card */
+body.dark-mode .card .emp-body *,
+body.dark-mode .card .emp-data *,
+body.dark-mode .card .emp-desc *,
+body.dark-mode .card .emp-info *,
+body.dark-mode .card p,
+body.dark-mode .card li,
+body.dark-mode .card small,
+body.dark-mode .card a,
+body.dark-mode .card span:not(.btn):not(.button):not(.badge):not(.chip){
+  color:#111 !important;
+  -webkit-text-fill-color:#111 !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  text-shadow:none !important;
+}
+
+/* Etiquetas tipo “Responsable:”, “Contacto:” en rojo */
+body.dark-mode .card strong,
+body.dark-mode .card b,
+body.dark-mode .card .label,
+body.dark-mode .card .etiqueta{
+  color:#d70000 !important;
+}
+
+/* Inputs/placeholder dentro de cards */
+body.dark-mode .card input,
+body.dark-mode .card textarea,
+body.dark-mode .card select{
+  background:#fff !important;
+  color:#111 !important;
+  border-color:#e5e5e5 !important;
+}
+body.dark-mode .card ::placeholder{ color:#777 !important; opacity:1 !important; }
+
+
+/* ===== Nuestra oferta: panel expandido con texto negro (dark) ===== */
+body.dark-mode #oferta :is(.accordion-content,.accordion-body,.panel,.panel-body,
+                           .oferta-content,.oferta-detalle,.detalle,.contenido,
+                           .desc,.info,.emp-body){
+  background:#fff !important;
+  color:#111 !important;
+  -webkit-text-fill-color:#111 !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  text-shadow:none !important;
+}
+
+/* Texto dentro del panel (títulos y párrafos) */
+body.dark-mode #oferta :is(.accordion-content,.accordion-body,.panel,.panel-body,
+                           .oferta-content,.oferta-detalle,.detalle,.contenido,
+                           .desc,.info,.emp-body) :is(h1,h2,h3,h4,h5,h6,p,li,span,small,em,strong,a){
+  color:#111 !important;
+}
+
+/* Botón rojo del panel: mantiene contraste */
+body.dark-mode #oferta :is(.btn,.button){ background:#d70000 !important; color:#fff !important; }
+
+
+/* ===== EMPRESAS ===== */
+
+/* 1) SOLO la card ABIERTA (la que tiene el bloque de detalles adentro) */
+#empresas .emp-card:has(.emp-body),
+#empresas .empresa-card:has(.emp-body){
+  background:#fff !important;
+  color:#111 !important;
+}
+#empresas .emp-card:has(.emp-body) *,
+#empresas .empresa-card:has(.emp-body) *{
+  color:#111 !important;
+  -webkit-text-fill-color:#111 !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  text-shadow:none !important;
+}
+/* panel interno gris de datos -> blanco */
+#empresas .emp-card:has(.emp-body) :is(.emp-body,.emp-data,.emp-desc,.emp-info),
+#empresas .empresa-card:has(.emp-body) :is(.emp-body,.emp-data,.emp-desc,.emp-info){
+  background:#fff !important;
+  border:1px solid #eee !important;
+}
+/* botones dentro de la card abierta */
+#empresas .emp-card:has(.emp-body) :is(.btn,.button,button),
+#empresas .empresa-card:has(.emp-body) :is(.btn,.button,button){
+  background:#d70000 !important; color:#fff !important;
+}
+
+/* 2) Cards CERRADAS (grilla): NO activar overlay por defecto */
+#empresas .emp-card:not(:has(.emp-body))::before,
+#empresas .emp-card:not(:has(.emp-body))::after,
+#empresas .emp-card:not(:has(.emp-body)) :is(.overlay,.hover,.hover-layer,.mask,.shade,.bg-hover,.bg-overlay,.card-overlay){
+  background:transparent !important;
+  opacity:0 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  pointer-events:none !important;
+}
+/* y no les fuerces el color; que usen su estilo original */
+#empresas .emp-card:not(:has(.emp-body)) *,
+#empresas .empresa-card:not(:has(.emp-body)) *{
+  color:inherit !important;
+  -webkit-text-fill-color:inherit !important;
+}
+
+
+/* ===== OFERTAS (acordeón) — contenido abierto en NEGRO ===== */
+body.dark-mode #oferta :is(.oferta-contenido,.oferta-detalle,.accordion-content,.panel,.panel-body){
+  background:#fff !important;
+  color:#111 !important;
+  border:1px solid #eee !important;     /* igual que las cards de empresas */
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  text-shadow:none !important;
+}
+
+/* Todo el texto adentro del contenido (sin afectar botones/chips) */
+body.dark-mode #oferta :is(.oferta-contenido,.oferta-detalle,.accordion-content,.panel,.panel-body)
+  *:not(.btn):not(.button):not(.badge):not(.chip):not(.pill){
+  color:#111 !important;
+  -webkit-text-fill-color:#111 !important;
+  opacity:1 !important;
+}
+
+/* Botón dentro del panel (si hay) mantiene contraste */
+body.dark-mode #oferta :is(.oferta-contenido,.oferta-detalle,.accordion-content,.panel,.panel-body)
+  :is(.btn,.button){
+  background:#d70000 !important;
+  color:#fff !important;
+}
+
+
